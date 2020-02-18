@@ -1,0 +1,23 @@
+{
+  "name": "ezfaas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "faas:add": "node -e \"faas = require('./faas/cli'); faas.add(process.argv[1], process.argv[2]);\"",
+    "faas:list": "node -e \"faas = require('./faas/cli'); faas.list();\"",
+    "faas:del": "node -e \"faas = require('./faas/cli'); faas.del(process.argv[1]);\"",
+    "faas:run": "node -e \"faas = require('./faas/run'); faas.run(process.argv[1]);\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "chalk": "^3.0.0",
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "nodemon": "^2.0.2"
+  }
+}
