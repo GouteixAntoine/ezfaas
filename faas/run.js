@@ -7,7 +7,7 @@ async function run(id, params) {
     console.log(chalk.red("no id specified"))
     throw "no id specified"
   }
-  const out = await axios.post(`http://${config.host}:${config.port}/${config.user}/${id}/run`, { params })
+  const out = await axios.post(`http://${config.host}:${config.port}/${config.user}/${id}/run`, params ? { params } : undefined)
   if (out.data.error) {
     console.log(chalk.red("error: ", out.data.error))
     throw out.data.error

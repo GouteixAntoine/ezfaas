@@ -23,7 +23,7 @@ async function add(fn, name) {
 async function del(id) {
   if (!id) {
     console.log(chalk.red("no id specified"))
-    console.log(chalk.green("npm run faas:del function_id"))
+    console.log(chalk.green("npm run faas:del function_id/function_name"))
     return
   }
   const out = await axios.post(`http://${config.host}:${config.port}/${config.user}/${id}/del`)
@@ -45,13 +45,13 @@ async function list() {
   console.log()
 }
 
-async function run(id) {
+async function run(id, params) {
   if (!id) {
     console.log(chalk.red("no id specified"))
-    console.log(chalk.green("npm run faas:run function_id"))
+    console.log(chalk.green("npm run faas:run function_id/function_name (params)"))
     return
   }
-  const out = await runFn(id)
+  const out = await runFn(id, params || [])
   console.log(out)
 }
 
