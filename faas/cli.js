@@ -4,6 +4,7 @@ const axios = require("axios")
 const moment = require("moment")
 const chalk = require("chalk")
 const runFn = require("./run")
+const addFn = require("./add")
 
 async function add(fn, name) {
   if (!fn || !name) {
@@ -12,10 +13,7 @@ async function add(fn, name) {
     return
   }
   const content = fs.readFileSync(fn, "utf-8");
-  const out = await axios.post(`http://${config.host}:${config.port}/${config.user}/add`, {
-    content,
-    name,
-  })
+  const out = await addFn(content, name)
   if (out.data.error)
     console.log(chalk.red("error: " + out.data.error))
 }
